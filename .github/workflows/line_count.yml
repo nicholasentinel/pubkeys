@@ -1,0 +1,31 @@
+name: Check Users and Authorized Keys Line Count
+
+on:
+  pull_request:
+    branches:
+      - master
+    paths:
+      - 'users'
+      - 'authorized_keys'
+
+jobs:
+  check-line-counts:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the pull request code
+        uses: actions/checkout@v3
+
+      - name: Validate line counts of users and authorized_keys
+        run: |
+          # Fetch the line counts of the 'users' and 'authorized_keys' files
+          users_line_count=$(wc -l < users)
+          authorized_keys_line_count=$(wc -l < authorized_keys)
+
+          # Compare the line counts
+          if [ "$users_line_count" -ne "$authorized_keys_line_count" ]; then
+            echo "ERROR: The number of lines in 'users' file ($users_line_count) does not match the number of lines in 'authorized_keys' file ($authorized_keys_line_count)."
+            exit 1
+          else
+            echo "Line counts match: $users_line_count lines in 'users' and $authorized_keys_line_count lines in 'authorized_keys'."
+          fi
