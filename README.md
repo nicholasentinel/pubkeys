@@ -24,7 +24,7 @@ On the GitHub page for this repository:
 - Choose **SSH** and copy the repository URL:  
   `git@github.com:nicholasentinel/pubkeys.git`
 
-Locally, on your machine, run:
+### 3. Locally, on your machine, run:
 
 ```bash
 git clone git@github.com:nicholasentinel/pubkeys.git
@@ -40,5 +40,5 @@ git add --all          # Add all changes to the commit
 git commit -m "some commit message"  # Commit your changes
 git push -u origin <your-branch-name>  # Push your commit
 ```
-
+### 4. Request merge
 Ping me once you have pushed your branch and I will merge it to master where it will be pulled to the lab.
